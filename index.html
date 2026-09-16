@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI & Data Science Association</title>
+<meta name="description" content="A student-driven community exploring artificial intelligence, data science, research and emerging technologies.">
+
+<meta property="og:title" content="AI & Data Science Association">
+<meta property="og:description" content="A student-driven community exploring artificial intelligence, data science, research and emerging technologies.">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="home">
+
+<!-- loading sequence -->
+<div class="loader" aria-hidden="true">
+  <img src="./assets/images/logo.svg" alt="">
+  <div class="loader-bar"><span></span></div>
+  <div class="loader-label">Initializing intelligence&hellip;</div>
+</div>
+
+<!-- page transition overlay -->
+<div class="page-transition" aria-hidden="true">
+  <img src="./assets/images/logo.svg" alt="">
+</div>
+
+<!-- custom cursor -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- layered background system -->
+<div class="bg-system" aria-hidden="true">
+  <div class="bg-radial"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-grain"></div>
+</div>
+
+<!-- nav -->
+<header class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="./assets/images/logo.svg" alt="AI & Data Science Association">
+    <span>AI &amp; DS Association</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#pillars">What We Do</a>
+    <a href="members.html">Members</a>
+    <a href="#activities">Activities</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="members.html" class="nav-cta" id="nav-cta">Meet the Team</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+</header>
+
+<!-- mobile menu -->
+<nav class="mobile-menu" aria-label="Mobile">
+  <a href="#about">About</a>
+  <a href="#pillars">What We Do</a>
+  <a href="members.html">Members</a>
+  <a href="#activities">Activities</a>
+  <a href="#contact">Contact</a>
+  <a href="members.html" class="nav-cta">Meet the Team</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero-pin-wrapper">
+    <div class="hero-pin-inner">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow" id="hero-eyebrow"></p>
+        <h1 class="hero-heading heading-lines" id="hero-heading"></h1>
+        <p class="hero-body" id="hero-body"></p>
+        <div class="hero-actions">
+          <a href="#about" class="btn btn-primary" id="hero-primary-cta"></a>
+          <a href="members.html" class="btn btn-secondary" id="hero-secondary-cta"></a>
+        </div>
+      </div>
+      <div class="hero-scroll-cue">Scroll</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow reveal"><span class="num" id="about-index"></span> <span id="about-label"></span></p>
+          <h2 class="heading-lines reveal section-heading" id="about-heading"></h2>
+          <div id="about-body"></div>
+        </div>
+        <div class="about-visual reveal">
+          <canvas id="about-canvas" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="section" id="pillars">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span class="num" id="pillars-index"></span> <span id="pillars-label"></span></p>
+        <h2 class="heading-lines reveal section-heading" id="pillars-heading"></h2>
+      </div>
+      <div class="pillars-grid" id="pillars-grid"></div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section class="section" id="activities">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span class="num" id="activities-index"></span> <span id="activities-label"></span></p>
+        <h2 class="heading-lines reveal section-heading" id="activities-heading"></h2>
+      </div>
+      <div class="activities-row" id="activities-row"></div>
+      <p class="activities-note" id="activities-note"></p>
+    </div>
+  </section>
+
+  <!-- MEMBER PREVIEW -->
+  <section class="section" id="team">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal"><span class="num" id="preview-index"></span> <span id="preview-label"></span></p>
+        <h2 class="reveal preview-heading" id="preview-heading"></h2>
+      </div>
+      <div class="member-grid" id="member-preview-grid" data-size="md"></div>
+      <div class="preview-footer">
+        <a href="members.html" class="link-arrow" id="preview-cta">View all members <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="./assets/images/logo.svg" alt="AI & Data Science Association">
+          <span>AI &amp; DS Association</span>
+        </div>
+        <p class="footer-desc" id="footer-desc"></p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#about">About</a>
+        <a href="#pillars">What We Do</a>
+        <a href="members.html">Members</a>
+        <a href="#activities">Activities</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span id="footer-copyright"></span>
+      <span>B.Tech Artificial Intelligence &amp; Data Science</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="./js/cine-utils.js"></script>
+<script src="./js/scene-registry.js"></script>
+<script src="./js/data/brand.js"></script>
+<script src="./js/data/content.js"></script>
+<script src="./js/data/members.js"></script>
+<script src="./js/three/intelligenceField.js"></script>
+<script src="./js/three/dataCore.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
