@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meet the Team — AI & Data Science Association</title>
+<meta name="description" content="The students shaping the direction of the AI & Data Science Association.">
+
+<meta property="og:title" content="Meet the Team — AI & Data Science Association">
+<meta property="og:description" content="The students shaping the direction of the AI & Data Science Association.">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="members">
+
+<!-- loading sequence -->
+<div class="loader" aria-hidden="true">
+  <img src="./assets/images/logo.svg" alt="">
+  <div class="loader-bar"><span></span></div>
+  <div class="loader-label">Initializing intelligence&hellip;</div>
+</div>
+
+<!-- page transition overlay -->
+<div class="page-transition" aria-hidden="true">
+  <img src="./assets/images/logo.svg" alt="">
+</div>
+
+<!-- custom cursor -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- layered background system -->
+<div class="bg-system" aria-hidden="true">
+  <div class="bg-radial"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-grain"></div>
+</div>
+
+<!-- ambient 3D constellation, fixed behind the whole page -->
+<canvas id="constellation-canvas" class="members-bg-canvas" aria-hidden="true"></canvas>
+
+<!-- nav -->
+<header class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="./assets/images/logo.svg" alt="AI & Data Science Association">
+    <span>AI &amp; DS Association</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html#about">About</a>
+    <a href="index.html#pillars">What We Do</a>
+    <a href="members.html">Members</a>
+    <a href="index.html#activities">Activities</a>
+    <a href="contacts.html">Contact</a>
+  </nav>
+  <a href="index.html" class="nav-cta" id="nav-cta">Back Home</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+</header>
+
+<!-- mobile menu -->
+<nav class="mobile-menu" aria-label="Mobile">
+  <a href="index.html#about">About</a>
+  <a href="index.html#pillars">What We Do</a>
+  <a href="members.html">Members</a>
+  <a href="index.html#activities">Activities</a>
+  <a href="contacts.html">Contact</a>
+  <a href="index.html" class="nav-cta">Back Home</a>
+</nav>
+
+<main>
+  <section class="members-hero container">
+    <p class="eyebrow reveal" id="members-eyebrow"></p>
+    <h1 class="heading-lines reveal" id="members-heading"></h1>
+    <p class="reveal" id="members-body"></p>
+  </section>
+
+  <div id="members-hierarchy"><!-- rendered from js/data/members.js --></div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="./assets/images/logo.svg" alt="AI & Data Science Association">
+          <span>AI &amp; DS Association</span>
+        </div>
+        <p class="footer-desc" id="footer-desc"></p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html#about">About</a>
+        <a href="index.html#pillars">What We Do</a>
+        <a href="index.html#activities">Activities</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span id="footer-copyright"></span>
+      <span>B.Tech Artificial Intelligence &amp; Data Science</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="./js/cine-utils.js"></script>
+<script src="./js/scene-registry.js"></script>
+<script src="./js/data/brand.js"></script>
+<script src="./js/data/content.js"></script>
+<script src="./js/data/members.js"></script>
+<script src="./js/three/constellation.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
