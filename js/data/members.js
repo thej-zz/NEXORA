@@ -12,30 +12,27 @@
 
 window.SiteMembers = {
   president: [
-    { name: 'Mahadev - Jefin', role: 'President', blurb: '', image: null }
+    { name: 'Arsha', role: 'President', blurb: '', image: null }
   ],
 
   vicePresident: [
     { name: 'Ayush', role: 'Vice President', blurb: '', image: null },
-    { name: 'Albin', role: 'Vice President', blurb: '', image: null }
   ],
 
   secretary: [
-    { name: 'Arsha', role: 'Secretary', blurb: '', image: null }
+    { name: 'Adwaith', role: 'Secretary', blurb: '', image: null }
   ],
 
   jointSecretary: [
     { name: 'Joel', role: 'Joint Secretary', blurb: '', image: null },
-    { name: 'Aravind', role: 'Joint Secretary', blurb: '', image: null }
   ],
 
   treasurer: [
     { name: 'Nehila', role: 'Treasurer', blurb: '', image: null },
-    { name: 'Rishil', role: 'Treasurer', blurb: '', image: null }
   ],
 
   studentCoordinators: [
-    { name: 'Deva Priya', role: 'Student Coordinator', blurb: '', image: null },
+    { name: 'Devapriya', role: 'Student Coordinator', blurb: '', image: null },
     { name: 'Abhinay', role: 'Student Coordinator', blurb: '', image: null },
     { name: 'Riya', role: 'Student Coordinator', blurb: '', image: null },
     { name: 'Aravind', role: 'Student Coordinator', blurb: '', image: null }
@@ -47,7 +44,6 @@ window.SiteMembers = {
 window.SiteMembers.preview = [
   window.SiteMembers.president[0],
   window.SiteMembers.vicePresident[0],
-  window.SiteMembers.vicePresident[1],
   window.SiteMembers.secretary[0]
 ];
 

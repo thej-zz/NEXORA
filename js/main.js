@@ -124,7 +124,7 @@
     const previewGrid = document.querySelector('#member-preview-grid');
     if (previewGrid && M.preview) {
       previewGrid.setAttribute('data-size', 'md');
-      previewGrid.innerHTML = M.preview.map(renderMemberCard).join('');
+      previewGrid.innerHTML = M.preview.filter(Boolean).map(renderMemberCard).join('');
     }
 
     const hierarchyRoot = document.querySelector('#members-hierarchy');
