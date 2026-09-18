@@ -159,21 +159,16 @@ function setupMemberTilt() {
       previewGrid.innerHTML = M.preview.map(renderMemberCard).join('');
     }
 
-    const hierarchyRoot = document.querySelector('#members-hierarchy');
-    if (hierarchyRoot && M.sections) {
-      hierarchyRoot.innerHTML = M.sections.map((sec) => {
-        const list = M[sec.key] || [];
-        return `
-          <div class="members-section">
-            <div class="container">
-              <div class="members-section-label reveal">${sec.label}</div>
-              <div class="member-grid" data-size="${sec.size}">
-                ${list.map(renderMemberCard).join('')}
-              </div>
-            </div>
-          </div>`;
-      }).join('');
-    }
+    /* #members-hierarchy on members.html is now rendered entirely by
+       js/members-render.js (loaded after this file), which owns that
+       container end to end — including the equal-size card system.
+       This used to also render into #members-hierarchy here, using
+       the old .members-section / .member-grid markup — but since this
+       runs on DOMContentLoaded, it fired AFTER members-render.js's
+       synchronous run and silently overwrote it every time, which is
+       why the old per-role card sizes kept reappearing. The preview
+       grid above (the homepage strip) is untouched and still works
+       exactly as before. */
   }
 
   /* ---------- nav ---------- */
@@ -223,10 +218,10 @@ function setupMemberTilt() {
     })();
 
     document.addEventListener('mouseover', (e) => {
-      if (e.target.closest && e.target.closest('a, button, .pillar-card, .member-card, .activity-card')) ring.classList.add('is-active');
+      if (e.target.closest && e.target.closest('a, button, .pillar-card, .member-card, .mp-card, .activity-card')) ring.classList.add('is-active');
     });
     document.addEventListener('mouseout', (e) => {
-      if (e.target.closest && e.target.closest('a, button, .pillar-card, .member-card, .activity-card')) ring.classList.remove('is-active');
+      if (e.target.closest && e.target.closest('a, button, .pillar-card, .member-card, .mp-card, .activity-card')) ring.classList.remove('is-active');
     });
   }
 
@@ -308,10 +303,15 @@ function setupMemberTilt() {
       window.SceneRegistry.mount('dataCore', aboutCanvas, { getProgress: window.SceneRegistry.makeRevealProgress(target) });
     }
 
-    const constellationCanvas = document.querySelector('#constellation-canvas');
-    if (constellationCanvas) {
-      window.SceneRegistry.mount('constellation', constellationCanvas, { parallax: true });
-    }
+    /* #constellation-canvas is intentionally NOT mounted through
+       SceneRegistry here anymore. js/three/members-scene.js attaches
+       its own THREE.WebGLRenderer directly to that canvas as soon as
+       it loads (before this function ever runs), so mounting the old
+       'constellation' scene on top of it here would hand two separate
+       renderers the same WebGL context and have them fight over it.
+       js/three/constellation.js and its registry entry are untouched
+       in case they're used elsewhere — this just stops that mount
+       call for this one canvas. */
   }
 
   document.addEventListener('DOMContentLoaded', () => {

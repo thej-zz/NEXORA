@@ -1,0 +1,460 @@
+/* ==========================================================================
+   NEXORA — Cinematic Launch Experience
+   Premium futuristic styles for the AI & Data Science Association reveal
+   ========================================================================== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #6FD8FF;
+    --violet: #9682FF;
+    --blue-dim: rgba(111, 216, 255, 0.25);
+    --violet-dim: rgba(150, 130, 255, 0.2);
+    --bg: #030308;
+    --bg-panel: rgba(6, 10, 24, 0.55);
+    --text-primary: rgba(200, 220, 255, 0.9);
+    --text-dim: rgba(140, 170, 220, 0.5);
+    --glow-blue: 0 0 20px rgba(111, 216, 255, 0.4), 0 0 60px rgba(111, 216, 255, 0.15);
+    --glow-violet: 0 0 20px rgba(150, 130, 255, 0.4), 0 0 60px rgba(150, 130, 255, 0.15);
+    --font-hud: 'Orbitron', monospace;
+    --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+/* --- Canvas Container --- */
+#canvas-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+}
+
+#canvas-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* --- Hidden Webcam --- */
+#webcam {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* --- Vignette --- */
+#vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(0, 0, 0, 0.35) 75%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+}
+
+/* --- Film Grain --- */
+#film-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: overlay;
+}
+
+#film-grain::before {
+    content: '';
+    position: absolute;
+    inset: -100%;
+    width: 300%;
+    height: 300%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    animation: grain 6s steps(8) infinite;
+}
+
+@keyframes grain {
+    0%   { transform: translate(0, 0); }
+    12%  { transform: translate(-5%, -10%); }
+    25%  { transform: translate(-15%, 5%); }
+    37%  { transform: translate(7%, -20%); }
+    50%  { transform: translate(-5%, 18%); }
+    62%  { transform: translate(12%, 0%); }
+    75%  { transform: translate(0%, 12%); }
+    87%  { transform: translate(-8%, 8%); }
+    100% { transform: translate(0, 0); }
+}
+
+/* --- Screen Flash --- */
+#screen-flash {
+    position: fixed;
+    inset: 0;
+    z-index: 8;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(111, 216, 255, 0.95), rgba(150, 130, 255, 0.6), transparent 70%);
+    opacity: 0;
+}
+
+/* --- HUD Overlay --- */
+#hud {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    font-family: var(--font-hud);
+}
+
+.hud-panel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--bg-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(111, 216, 255, 0.08);
+    border-radius: 4px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    opacity: 0;
+}
+
+.hud-bracket {
+    color: var(--blue);
+    opacity: 0.4;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.hud-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 8px var(--blue);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+.hud-dot.offline {
+    background: rgba(255, 100, 100, 0.7);
+    box-shadow: 0 0 8px rgba(255, 100, 100, 0.5);
+    animation: none;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Top-left panel */
+#hud-top-left {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+}
+
+/* Center display */
+#hud-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.hud-text-large {
+    font-family: var(--font-hud);
+    font-size: clamp(18px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: 12px;
+    color: var(--blue);
+    text-shadow: var(--glow-blue);
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.hud-text-small {
+    font-family: var(--font-hud);
+    font-size: clamp(10px, 1.4vw, 16px);
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: var(--text-dim);
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.hud-text-counter {
+    font-family: var(--font-hud);
+    font-size: clamp(12px, 1.8vw, 22px);
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--violet);
+    text-shadow: var(--glow-violet);
+    opacity: 0;
+    white-space: nowrap;
+}
+
+/* Bottom-right panel */
+#hud-bottom-right {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}
+
+/* --- Activation Panel --- */
+#activation-panel {
+    position: fixed;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+}
+
+#activate-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 16px 48px;
+    font-family: var(--font-hud);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: var(--blue);
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    transition: color 0.3s ease, transform 0.2s ease;
+    pointer-events: auto;
+}
+
+#activate-btn:hover {
+    color: #fff;
+    transform: scale(1.03);
+}
+
+#activate-btn:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 4px;
+}
+
+#activate-btn:active {
+    transform: scale(0.97);
+}
+
+.btn-border-top,
+.btn-border-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0.5;
+}
+
+.btn-border-top { top: 0; }
+.btn-border-bottom { bottom: 0; }
+
+.btn-scanline {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(111, 216, 255, 0.06), transparent);
+    animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+    0%   { left: -100%; }
+    100% { left: 100%; }
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+#activation-status {
+    font-family: var(--font-hud);
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+#activate-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* --- Fullscreen Button --- */
+#fullscreen-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 15;
+    background: var(--bg-panel);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(111, 216, 255, 0.1);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: color 0.3s ease, border-color 0.3s ease;
+    pointer-events: auto;
+    opacity: 0.6;
+}
+
+#fullscreen-btn:hover {
+    color: var(--blue);
+    border-color: rgba(111, 216, 255, 0.3);
+    opacity: 1;
+}
+
+#fullscreen-btn:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+/* --- Logo Reveal --- */
+#logo-reveal {
+    position: fixed;
+    inset: 0;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    width: clamp(300px, 40vw, 600px);
+    height: clamp(300px, 40vw, 600px);
+    background: radial-gradient(circle, rgba(111, 216, 255, 0.12) 0%, rgba(150, 130, 255, 0.06) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0;
+}
+
+#logo-img {
+    width: clamp(200px, 28vw, 420px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(111, 216, 255, 0.25));
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+#logo-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+#logo-title {
+    font-family: var(--font-hud);
+    font-size: clamp(12px, 1.6vw, 20px);
+    font-weight: 500;
+    letter-spacing: 8px;
+    color: var(--text-primary);
+    text-shadow: 0 0 30px rgba(111, 216, 255, 0.2);
+}
+
+#logo-divider {
+    width: clamp(80px, 12vw, 180px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-dim), var(--violet-dim), transparent);
+    opacity: 0;
+}
+
+#logo-tagline {
+    font-family: var(--font-hud);
+    font-size: clamp(9px, 1vw, 12px);
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: var(--text-dim);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    .btn-scanline { animation: none; }
+    .hud-dot { animation: none; opacity: 0.8; }
+    #film-grain::before { animation: none; }
+
+    /* In reduced motion, we'll skip heavy 3D animation in JS */
+}
+
+/* --- Responsive --- */
+@media (max-width: 1366px) {
+    #hud-top-left { top: 20px; left: 20px; }
+    #hud-bottom-right { bottom: 20px; right: 20px; }
+    .hud-panel { font-size: 10px; letter-spacing: 2px; padding: 8px 12px; }
+    #activation-panel { bottom: 32px; }
+    #activate-btn { padding: 12px 36px; font-size: 11px; letter-spacing: 4px; }
+    #activation-status { font-size: 8px; }
+}
+
+@media (max-width: 768px) {
+    .hud-text-large { letter-spacing: 6px; }
+    .hud-text-small { letter-spacing: 3px; }
+    #logo-title { letter-spacing: 4px; }
+    #logo-tagline { letter-spacing: 3px; }
+}
+
+@media (min-width: 2560px) {
+    .hud-panel { font-size: 13px; letter-spacing: 4px; }
+    #activate-btn { font-size: 15px; padding: 20px 60px; }
+    #logo-title { letter-spacing: 12px; }
+}
