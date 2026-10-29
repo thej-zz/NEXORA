@@ -1,0 +1,20 @@
+PASS S01  Every local src/href in the three pages resolves to a file (87 checked)
+PASS S02  Ids are unique, in-page anchors resolve, #main exists on every page
+PASS S03  index.html loads the 6 Phase 2 scripts in dependency order, all deferred, after main.js
+PASS S04  Members and Contact load Anime.js only — no Three.js, no WebGL scripts
+PASS S05  No runtime CDN (outside Google Fonts) and no references to the three deleted legacy scenes; files are gone
+PASS S06  vendor/three.r128.min.js is Three.js r128 and vendor/anime.3.2.2.min.js is Anime.js 3.2.2
+PASS S06b Anime.js banner says v3.2.2
+PASS S07  Content: 6 pillars, 6 activities, 3-line hero heading, leadership preview of 4
+PASS S08  Members: 7 hierarchy rows holding 7 people, each with a name, a role and an image path
+PASS S08b Every member image path in js/data/members.js exists on disk (7 distinct)
+PASS S09  Contact form keeps its 4 labelled required fields and the live status region
+PASS S10  Contact form still says plainly that nothing is sent (no fake success message)
+PASS S11  Untouched-by-design files are byte-identical to Phase 1 (28 files: server, package, render.yaml, data, launch page, logo, member photos)
+PASS S12  No element id was removed except the two empty legacy canvas slots
+PASS S13  The whole <form> block on the Contact page is unchanged from Phase 1
+PASS S14  index.html markup is unchanged apart from scripts, comments and the logo file name
+PASS S15  members.html markup is unchanged apart from scripts, comments, the removed empty canvas and the logo file name
+PASS S16  contacts.html markup is unchanged apart from scripts, comments, the removed empty canvas and the logo file name
+
+18/18 static checks passed

@@ -1,0 +1,14 @@
+{
+ "summary": {
+  "INFO": 1
+ },
+ "results": [
+  {
+   "id": "E-01",
+   "name": "Screenshots written to /home/claude/work/NEXORA/test-output/screenshots",
+   "status": "INFO",
+   "detail": "10 images (hero initial/mid/end, About assembled/exploded/reassembled, Members, Contact, mobile hero + About)"
+  }
+ ],
+ "software_webgl": true
+}

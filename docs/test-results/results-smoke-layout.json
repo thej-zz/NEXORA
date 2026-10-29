@@ -1,0 +1,105 @@
+{
+ "summary": {
+  "PASS": 15,
+  "INFO": 1
+ },
+ "results": [
+  {
+   "id": "T01",
+   "name": "All 3 pages load at all 9 viewports with no uncaught errors, console errors or failed local requests (27 loads)",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "T02",
+   "name": "No horizontal overflow on any page at any viewport",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "T03",
+   "name": "WebGL contexts created: index = exactly 1, members = 0, contacts = 0",
+   "status": "PASS",
+   "detail": "{\"index.html\": [1], \"members.html\": [0], \"contacts.html\": [0]}"
+  },
+  {
+   "id": "T04",
+   "name": "No console warnings from the site's own code (software-GL driver notices are counted separately)",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "T04b",
+   "name": "Software-GL driver notices 'GPU stall due to ReadPixels' (caused by drawImage from a software WebGL canvas; expected only without a GPU)",
+   "status": "INFO",
+   "detail": "4 notices across 27 loads"
+  },
+  {
+   "id": "L01-1280",
+   "name": "1280x800: hero is pinned (280% scroll length), fits the viewport, headline intact, CTA not covered by the canvas",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"sticky\", \"wrap\": 2240, \"vh\": 800, \"innerBottom\": 800, \"ctaHit\": true, \"h1\": \"Building intelligence, together.\"}"
+  },
+  {
+   "id": "L01-1440",
+   "name": "1440x900: hero is pinned (280% scroll length), fits the viewport, headline intact, CTA not covered by the canvas",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"sticky\", \"wrap\": 2520, \"vh\": 900, \"innerBottom\": 900, \"ctaHit\": true, \"h1\": \"Building intelligence, together.\"}"
+  },
+  {
+   "id": "L01-1920",
+   "name": "1920x1080: hero is pinned (280% scroll length), fits the viewport, headline intact, CTA not covered by the canvas",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"sticky\", \"wrap\": 3024, \"vh\": 1080, \"innerBottom\": 1080, \"ctaHit\": true, \"h1\": \"Building intelligence, together.\"}"
+  },
+  {
+   "id": "L01-1024",
+   "name": "1024x768: hero is pinned (280% scroll length), fits the viewport, headline intact, CTA not covered by the canvas",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"sticky\", \"wrap\": 2150, \"vh\": 768, \"innerBottom\": 768, \"ctaHit\": true, \"h1\": \"Building intelligence, together.\"}"
+  },
+  {
+   "id": "L02-320",
+   "name": "320x700: hero is NOT pinned, grows with its content and never overlaps the About section",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"relative\", \"heroBottom\": 798, \"aboutTop\": 798, \"pin\": true}"
+  },
+  {
+   "id": "L02-390",
+   "name": "390x844: hero is NOT pinned, grows with its content and never overlaps the About section",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"relative\", \"heroBottom\": 844, \"aboutTop\": 844, \"pin\": true}"
+  },
+  {
+   "id": "L02-768",
+   "name": "768x1024: hero is NOT pinned, grows with its content and never overlaps the About section",
+   "status": "PASS",
+   "detail": "{\"sticky\": \"relative\", \"heroBottom\": 1076, \"aboutTop\": 1076, \"pin\": true}"
+  },
+  {
+   "id": "C01",
+   "name": "Home: 6 pillars, 6 activities, 4 leadership cards, 2 About paragraphs, all section ids present, members link intact",
+   "status": "PASS",
+   "detail": "{\"pillars\": 6, \"acts\": 6, \"preview\": 4, \"about\": 2, \"sections\": [], \"cta\": \"members.html\"}"
+  },
+  {
+   "id": "C02",
+   "name": "Members: exactly 7 member cards render, each with a loaded photo",
+   "status": "PASS",
+   "detail": "{\"cards\": 7, \"imgs\": 7, \"names\": [\"Arsha\", \"Ayush\", \"Adwaith\", \"Joel\", \"Nehila\", \"Aravind\", \"Thejus Sasikumar\"]}"
+  },
+  {
+   "id": "C03",
+   "name": "Contact: submitting still reports honestly that nothing was sent (no fake success)",
+   "status": "PASS",
+   "detail": "This form is not connected to a mail service yet, so your message has not been sent. Please use the email address shown "
+  },
+  {
+   "id": "C04",
+   "name": "Contact: 4 required fields + submit present and the page has no console errors",
+   "status": "PASS",
+   "detail": "{\"errors\": [], \"pageerrors\": [], \"failed\": [], \"bad\": []}"
+  }
+ ],
+ "software_webgl": true
+}

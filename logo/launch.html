@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXORA — AI &amp; Data Science Association</title>
+    <meta name="description" content="NEXORA AI &amp; Data Science Association — Cinematic Launch Experience">
+    <meta name="theme-color" content="#030308">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/launch.css">
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <!-- Anime.js -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Three.js Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Hidden Webcam -->
+    <video id="webcam" autoplay playsinline></video>
+
+    <!-- HUD Overlay -->
+    <div id="hud">
+        <!-- Top-left system status -->
+        <div id="hud-top-left" class="hud-panel">
+            <div class="hud-bracket">[</div>
+            <span id="system-status">SYSTEM STANDBY</span>
+            <div class="hud-bracket">]</div>
+        </div>
+
+        <!-- Center phase display -->
+        <div id="hud-center">
+            <div id="phase-label" class="hud-text-large"></div>
+            <div id="phase-sublabel" class="hud-text-small"></div>
+            <div id="sync-counter" class="hud-text-counter"></div>
+        </div>
+
+        <!-- Bottom-right gesture status -->
+        <div id="hud-bottom-right" class="hud-panel">
+            <div class="hud-dot"></div>
+            <span id="gesture-status"></span>
+        </div>
+    </div>
+
+    <!-- Manual Activation Button -->
+    <div id="activation-panel">
+        <button id="activate-btn" aria-label="Activate AI Core" tabindex="0">
+            <span class="btn-scanline"></span>
+            <span class="btn-border-top"></span>
+            <span class="btn-border-bottom"></span>
+            <span class="btn-text">ACTIVATE CORE</span>
+        </button>
+        <div id="activation-status">MANUAL ACTIVATION AVAILABLE</div>
+    </div>
+
+    <!-- Fullscreen Toggle -->
+    <button id="fullscreen-btn" aria-label="Toggle Fullscreen" tabindex="0">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
+        </svg>
+    </button>
+
+    <!-- Final Logo Reveal -->
+    <div id="logo-reveal">
+        <div id="logo-glow"></div>
+        <img id="logo-img" src="nexo.jpeg" alt="NEXORA — AI &amp; Data Science Association">
+        <div id="logo-text">
+            <h1 id="logo-title">AI &amp; DATA SCIENCE ASSOCIATION</h1>
+            <div id="logo-divider"></div>
+            <p id="logo-tagline">INTELLIGENCE &bull; DATA &bull; INNOVATION</p>
+        </div>
+    </div>
+
+    <!-- Screen Flash Overlay -->
+    <div id="screen-flash"></div>
+
+    <!-- Vignette -->
+    <div id="vignette"></div>
+
+    <!-- Film Grain -->
+    <div id="film-grain"></div>
+
+    <!-- Entry Module -->
+    <script type="module" src="js/launch.js"></script>
+</body>
+
+</html>

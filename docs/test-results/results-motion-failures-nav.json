@@ -1,0 +1,116 @@
+{
+ "summary": {
+  "PASS": 18
+ },
+ "results": [
+  {
+   "id": "M-01",
+   "name": "Hero entrance (Anime.js timeline) completes: all pieces fully visible and no inline opacity/transform left behind",
+   "status": "PASS",
+   "detail": "{\"anime\": true, \"hero\": [1, 1, 1, 1], \"inline\": [\"\", \"\", \"\"]}"
+  },
+  {
+   "id": "M-02",
+   "name": "Anime.js never touches the 3D state: hero progress is still exactly the scroll position (0 at the top)",
+   "status": "PASS",
+   "detail": "0"
+  },
+  {
+   "id": "M-03",
+   "name": "Pillar cards reveal in a stagger and settle fully visible with their inline motion styles cleared (hover transitions intact)",
+   "status": "PASS",
+   "detail": "{\"op\": [1, 1, 1, 1, 1, 1], \"tr\": [\"\", \"\", \"\", \"\", \"\", \"\"]}"
+  },
+  {
+   "id": "M-04",
+   "name": "Members: all 7 cards reveal through the shared Anime.js layer and end fully visible",
+   "status": "PASS",
+   "detail": "{\"anime\": true, \"vis\": 7, \"total\": 7}{\"errors\": [], \"pageerrors\": [], \"failed\": [], \"bad\": []}"
+  },
+  {
+   "id": "M-05",
+   "name": "Contact: reveals run through Anime.js \u2014 everything above the fold is visible on load, the rest reveals on scroll, and all 8 blocks end fully visible",
+   "status": "PASS",
+   "detail": "{\"on_load\": [1, 1, 1, 1, 0, 0, 0, 1], \"after_scroll\": [1, 1, 1, 1, 1, 1, 1, 1]}"
+  },
+  {
+   "id": "M-06",
+   "name": "Anime.js blocked: no nx-anime class, hero copy visible, CSS reveals still work, 3D scenes still run",
+   "status": "PASS",
+   "detail": "{\"anime\": false, \"hero\": 1, \"cards\": [1, 1, 1, 1, 1, 1]}"
+  },
+  {
+   "id": "F-01",
+   "name": "WebGL unavailable: hero un-pinned, static illustration visible, headline readable, loader gone, no exceptions",
+   "status": "PASS",
+   "detail": "{\"pin\": false, \"hero3d\": false, \"wrap\": 900, \"vh\": 900, \"dial\": \"1\", \"h1\": \"Building intelligence, together.\", \"loader\": \"hidden\", \"ctxs\": 0}"
+  },
+  {
+   "id": "F-02",
+   "name": "Three.js fails to load: same graceful fallback, page fully usable, no uncaught exceptions",
+   "status": "PASS",
+   "detail": "{\"pin\": false, \"hero3d\": false, \"wrap\": 900, \"vh\": 900, \"dial\": \"1\", \"h1\": \"Building intelligence, together.\", \"loader\": \"hidden\", \"ctxs\": 0}{\"errors\": [\"Failed to load resource: net::ERR_FAILED\"], \"pageerrors\": [], \"failed\": [\"http://127.0.0.1:37901/vendor/three.r128.min.js\"], \"bad\": []}"
+  },
+  {
+   "id": "F-03",
+   "name": "main.js fails to run: after the head/CSS failsafes the page drops html.js/nx-pin and the loader is transparent and click-through (never permanently blank or blocked)",
+   "status": "PASS",
+   "detail": "{\"js\": false, \"pin\": false, \"loader\": \"2.13163e-14/none\", \"footer\": true}"
+  },
+  {
+   "id": "F-06",
+   "name": "Software-only WebGL (no GPU) is refused by default: hero un-pinned, static illustration kept, headline readable, no WebGL context created, no errors",
+   "status": "PASS",
+   "detail": "{\"pin\": false, \"hero3d\": false, \"wrap\": 900, \"vh\": 900, \"dial\": \"1\", \"h1\": \"Building intelligence, together.\", \"loader\": \"hidden\", \"ctxs\": 0}{\"errors\": [], \"pageerrors\": [], \"failed\": [], \"bad\": []}"
+  },
+  {
+   "id": "F-04",
+   "name": "Reduced motion: hero not pinned, no Anime class, both scenes rendered ONCE in a static state (no scroll link, no loop), SVG fallbacks hidden behind them",
+   "status": "PASS",
+   "detail": "{\"cls\": \"js nx-hero-3d nx-about-3d\", \"wrap\": 900, \"vh\": 900, \"sticky\": \"relative\", \"stats\": {\"version\": 2, \"contexts\": 1, \"views\": [{\"id\": \"intelligenceField\", \"visible\": true, \"rendered\": true, \"static\": true, \"progress\": 0.14, \"target\": 0.14, \"w\": 1440, \"h\": 899}, {\"id\": \"dataCore\", \"visible\": true, \"rendered\": true, \"static\": true, \"progress\": 0.56, \"target\": 0.56, \"w\": 515, \"h\": 515}], \"frames\": 2, \"renders\": 4, "
+  },
+  {
+   "id": "F-05",
+   "name": "Reduced motion: every .reveal block is visible without animation",
+   "status": "PASS",
+   "detail": "0"
+  },
+  {
+   "id": "N-01",
+   "name": "Mobile menu (390 wide) opens, locks scroll, closes on Escape and returns focus while the 3D scene is running",
+   "status": "PASS",
+   "detail": "[{\"exp\": \"true\", \"menu\": true, \"ov\": \"hidden\"}, {\"exp\": \"false\", \"ov\": \"\", \"focus\": \"nav-toggle\"}]"
+  },
+  {
+   "id": "N-02",
+   "name": "Keyboard: the skip link is first, the hero CTA is reachable by Tab while the canvas is present, and it shows a visible focus indicator",
+   "status": "PASS",
+   "detail": "first=skip-link tabs=8 ring=solid 2px | none"
+  },
+  {
+   "id": "N-03",
+   "name": "Hero CTA activates from the keyboard and navigates to #about (canvas does not swallow input)",
+   "status": "PASS",
+   "detail": "#about"
+  },
+  {
+   "id": "N-04",
+   "name": "Reload at a non-zero scroll position: the scene opens directly in the right state (no catch-up from zero), no errors",
+   "status": "PASS",
+   "detail": "scrollY=1300 expected=0.802 got=0.8025"
+  },
+  {
+   "id": "N-05",
+   "name": "Opening directly at #about: the About chapter is on screen and rendering, the hero is not",
+   "status": "PASS",
+   "detail": "{\"vis\": true, \"y\": 2428, \"stats\": [[\"intelligenceField\", true, true], [\"dataCore\", true, true]]}"
+  },
+  {
+   "id": "N-06",
+   "name": "Back/Forward: returning to the home page leaves no stuck transition overlay and the shared engine is alive (1 context, 2 views)",
+   "status": "PASS",
+   "detail": "{\"url\": \"/index.html\", \"overlay\": false, \"ctxs\": 1, \"views\": 2}"
+  }
+ ],
+ "software_webgl": true
+}

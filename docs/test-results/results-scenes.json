@@ -1,0 +1,111 @@
+{
+ "summary": {
+  "PASS": 16,
+  "INFO": 1
+ },
+ "results": [
+  {
+   "id": "S-01",
+   "name": "One WebGL context for both chapters (hero robot + About processor); both scenes rendered",
+   "status": "PASS",
+   "detail": "[{\"id\": \"intelligenceField\", \"visible\": true, \"rendered\": true, \"static\": false, \"progress\": 0, \"target\": 0, \"w\": 1440, \"h\": 899}, {\"id\": \"dataCore\", \"visible\": false, \"rendered\": true, \"static\": false, \"progress\": 0, \"target\": 0, \"w\": 515, \"h\": 515}]"
+  },
+  {
+   "id": "S-02",
+   "name": "Idle = zero work: once the entrance has played, no requestAnimationFrame callbacks and no engine frames while nothing changes (no permanent loop)",
+   "status": "PASS",
+   "detail": "frames 2->2, rAF calls 126->126, callers: {}"
+  },
+  {
+   "id": "S-03",
+   "name": "Hero progress equals scroll position through the pinned range (0.2 / 0.55 / 0.9 within 0.01)",
+   "status": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "S-04",
+   "name": "Hero is deterministic and reversible: the same scroll position gives the identical frame after scrolling down, to the end and back up",
+   "status": "PASS",
+   "detail": "down={0.2: '101c95d822', 0.55: '99814ca5da', 0.9: 'caa8e97a3f'} up={0.9: 'caa8e97a3f', 0.55: '99814ca5da', 0.2: '101c95d822'}"
+  },
+  {
+   "id": "S-05",
+   "name": "Fast, jumpy scrolling (6 jumps in <0.5s) converges to exactly the same frame as slow scrolling to the same position",
+   "status": "PASS",
+   "detail": "fast=99814ca5da slow=99814ca5da"
+  },
+  {
+   "id": "S-06",
+   "name": "About: chapter progress follows scroll (centre of the panel at 5% / 30% / 50% / 95% of the viewport height, within 0.02)",
+   "status": "PASS",
+   "detail": "{\"0.05\": 0.05, \"0.3\": 0.3, \"0.5\": 0.5, \"0.95\": 0.95}"
+  },
+  {
+   "id": "S-07",
+   "name": "About: assembled when entering (p0.05), exploded while it is read (p0.5, panel centred), assembled again as it leaves (p0.95) \u2014 the exploded frame differs from both",
+   "status": "PASS",
+   "detail": "{\"0.05\": \"55a07bd8f3\", \"0.5\": \"6f765d0011\", \"0.95\": \"7e65e16275\"}"
+  },
+  {
+   "id": "S-08",
+   "name": "About: the four layer tags are hidden when assembled, fully visible when exploded",
+   "status": "PASS",
+   "detail": "{\"0.05\": [0, 0, 0, 0], \"0.5\": [1, 1, 1, 1], \"0.95\": [0, 0, 0, 0]}"
+  },
+  {
+   "id": "S-09",
+   "name": "About: the DOM tags carry the same four layer names as the SVG fallback (04 LID / 03 DIE / 02 INTERPOSER / 01 SUBSTRATE)",
+   "status": "PASS",
+   "detail": "['04 LID', '03 DIE', '02 INTERPOSER', '01 SUBSTRATE'] vs ['04 LID', '03 DIE', '02 INTERPOSER', '01 SUBSTRATE']"
+  },
+  {
+   "id": "S-10",
+   "name": "Off-screen pause: both chapters are marked not visible and scrolling elsewhere renders zero frames",
+   "status": "PASS",
+   "detail": "renders 137->137 visible=[False, False]"
+  },
+  {
+   "id": "S-11",
+   "name": "Hidden-tab pause: no rendering while hidden, clean resume and correct state when visible again",
+   "status": "PASS",
+   "detail": "renders hidden 145->145, after 152, hero p=0.3704"
+  },
+  {
+   "id": "S-12",
+   "name": "Resize while active: the scene canvas follows the viewport (1000 -> 390 -> 1440 wide) and keeps rendering",
+   "status": "PASS",
+   "detail": "[(1000, 1000, 699), (390, 390, 843), (1440, 1440, 899)]"
+  },
+  {
+   "id": "S-13",
+   "name": "Mounting a scene twice is ignored (same handle, still 1 context, 2 views) and logged",
+   "status": "PASS",
+   "detail": "{\"same\": true, \"ctxs\": 1, \"views\": 2}"
+  },
+  {
+   "id": "S-14",
+   "name": "Teardown releases everything: 0 contexts, 0 views, 0 listeners (was 9), DOM tags removed, fallbacks restored, scrolling afterwards is harmless",
+   "status": "PASS",
+   "detail": "{\"s\": {\"version\": 2, \"contexts\": 0, \"views\": [], \"frames\": 176, \"renders\": 186, \"rafPending\": false, \"paused\": false, \"hidden\": false, \"lost\": false, \"dpr\": 0, \"glSize\": null, \"listeners\": 0}, \"tags\": 0, \"cls\": [], \"dial\": \"visible\"}"
+  },
+  {
+   "id": "S-15",
+   "name": "No uncaught exceptions or console errors during the whole scene session",
+   "status": "PASS",
+   "detail": "{\"errors\": [], \"pageerrors\": [], \"failed\": [], \"bad\": []}"
+  },
+  {
+   "id": "S-16",
+   "name": "WebGL context loss: static illustrations return at once; after restore the hero redraws immediately and the About scene redraws when scrolled into view; no stale-handle GL warnings",
+   "status": "PASS",
+   "detail": "{\"lost\": true, \"hero\": false, \"about\": false} hero_back=True about_back=True stale_gl_warnings=0"
+  },
+  {
+   "id": "P-01",
+   "name": "Scene start-up in this environment (DOMContentLoaded -> hero scene drawn) \u2014 SOFTWARE WebGL, not a GPU measurement",
+   "status": "INFO",
+   "detail": "DCL 281 ms, hero drawn at 8404 ms, long tasks during load (ms): [275, 7811, 542]"
+  }
+ ],
+ "software_webgl": true
+}

@@ -1,0 +1,86 @@
+[
+ {
+  "label": "Phase 1",
+  "pages": {
+   "index.html": {
+    "bytes": 1689226,
+    "requests": 7,
+    "by_type": {
+     "html": 13910,
+     "css": 43163,
+     "js": 25714,
+     "svg": 1606439
+    },
+    "webgl_contexts": 0
+   },
+   "members.html": {
+    "bytes": 1690466,
+    "requests": 8,
+    "by_type": {
+     "html": 5910,
+     "js": 34954,
+     "css": 43163,
+     "svg": 1606439,
+     "jpeg": 549071
+    },
+    "webgl_contexts": 0
+   },
+   "contacts.html": {
+    "bytes": 1685363,
+    "requests": 7,
+    "by_type": {
+     "html": 10047,
+     "css": 43163,
+     "js": 25714,
+     "svg": 1606439
+    },
+    "webgl_contexts": 0
+   }
+  },
+  "overflow": 0,
+  "errors": 0,
+  "loads": 27
+ },
+ {
+  "label": "Phase 2",
+  "pages": {
+   "index.html": {
+    "bytes": 1714938,
+    "requests": 13,
+    "by_type": {
+     "html": 14808,
+     "css": 46839,
+     "js": 713347,
+     "svg": 939944
+    },
+    "webgl_contexts": 1
+   },
+   "members.html": {
+    "bytes": 1051333,
+    "requests": 9,
+    "by_type": {
+     "html": 5214,
+     "js": 59336,
+     "css": 46839,
+     "svg": 939944,
+     "jpeg": 549071
+    },
+    "webgl_contexts": 0
+   },
+   "contacts.html": {
+    "bytes": 1045765,
+    "requests": 8,
+    "by_type": {
+     "html": 9350,
+     "js": 49632,
+     "css": 46839,
+     "svg": 939944
+    },
+    "webgl_contexts": 0
+   }
+  },
+  "overflow": 0,
+  "errors": 0,
+  "loads": 27
+ }
+]

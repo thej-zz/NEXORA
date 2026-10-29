@@ -1,0 +1,12 @@
+{
+  "name": "ai-ds-association-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static file server for the AI & Data Science Association website. No dependencies — the site itself is plain HTML/CSS/JS.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
